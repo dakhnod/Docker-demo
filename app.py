@@ -14,16 +14,19 @@ messages_db = [
     'First message'
 ]
 
+def get_messages():
+    cursor = connector.cursor()
+    cursor.execute('SELECT message FROM messages')
+    messages = cursor.fetchall()
+    return [message[0] for message in messages][::-1]
+
 @app.get('/')
 def route_default():
     return flask.redirect('/messages')
 
 @app.get('/messages')
 def messages_display():
-    cursor = connector.cursor()
-    cursor.execute('SELECT message FROM messages')
-    messages = cursor.fetchall()
-    return flask.render_template('messages.jinja2', messages=messages)
+    return flask.render_template('messages.jinja2', messages=get_messages())
 
 def insert_message(message):
     cursor = connector.cursor()

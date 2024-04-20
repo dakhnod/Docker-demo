@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Messages wall</title>
+    </head>
+    <body>
+        <form action="/post" method="POST">
+            <input type="text" name="message">
+            <input type="submit">
+        </form>
+
+        <div>
+            {% for message in messages %}
+                <div>
+                    <span>{{ message[0] }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

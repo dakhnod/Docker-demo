@@ -3,8 +3,8 @@ import mysql.connector as sql
 
 app = flask.Flask(__name__)
 connector = sql.connect(
-    # host='172.17.0.2',
-    port=3307,
+    host='database',
+    port=3306,
     user='luga',
     password='luga',
     database='luga'

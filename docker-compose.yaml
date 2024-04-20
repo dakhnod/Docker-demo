@@ -1,0 +1,16 @@
+services:
+  luga-web:
+    image: luga-web
+    build:
+      context: .
+    ports:
+      - 8082:5000
+  database:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: luga
+      MYSQL_USER: luga
+      MYSQL_PASSWORD: luga
+      MYSQL_ROOT_PASSWORD: luga
+    ports:
+      - 3308:3306
